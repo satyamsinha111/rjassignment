@@ -4,13 +4,26 @@ import Box from "./Box";
 
 const App = (props) => {
   const [green, setGreen] = useState(false);
+
+  const getPattern = () => {
+    let wordList = [];
+    let patternList = [];
+    for (let m = 0; m <= 4; m++) {
+      wordList = [];
+      for (let n = 1; n <= m; n++) {
+        wordList.push("Hello");
+      }
+      let data = wordList.join(" ");
+      patternList.push(data);
+    }
+
+    return patternList;
+  };
   return (
     <div>
-      {/* <h1>Hello</h1>
-      <h1>HelloHello</h1>
-      <h1>HelloHelloHello</h1>
-      <h1>HelloHelloHelloHello</h1> */}
-
+      {getPattern().map((value, index) => {
+        return <h1 key={index}>{value}</h1>;
+      })}
       <div className="wrapper">
         <Box isGreen={green} style={{ width: 50, height: 50 }} />
       </div>
